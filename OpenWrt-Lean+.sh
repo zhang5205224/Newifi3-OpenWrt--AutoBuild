@@ -3,8 +3,8 @@
 cd openwrt
 
 # 安装额外依赖软件包
-# sudo -E apt-get -y install rename
-#ln -s ../../diy ./package/openwrt-packages
+ sudo -E apt-get -y install rename
+ln -s ../../diy ./package/openwrt-packages
 
 # 更新feeds文件
 #sed -i 's@#src-git helloworld@src-git helloworld@g' feeds.conf.default #启用helloworld
@@ -23,18 +23,18 @@ cat feeds.conf.default
 #rm -rf ./package/lean/luci-app-unblockmusic
 
 # 添加第三方软件包
-#git clone https://github.com/gbaoye/openwrt-packages package/openwrt-packages
-#git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
-#git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-#git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
-#git clone https://github.com/garypang13/luci-theme-edge package/luci-theme-edge
-#git clone https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
-#git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
+git clone https://github.com/gbaoye/openwrt-packages package/openwrt-packages
+git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
+git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
+git clone https://github.com/garypang13/luci-theme-edge package/luci-theme-edge
+git clone https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
+git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
 git clone https://github.com/hubbylei/luci-app-clash package/luci-app-clash
 git clone https://github.com/110010110/luci-app-adguardhome package/luci-app-adguardhome
-#git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-smartdns.git package/luci-app-smartdns
-#git clone https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
-#git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-openclash package/luci-app-openclash
+git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-smartdns.git package/luci-app-smartdns
+git clone https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+git clone https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-openclash package/luci-app-openclash
 
 # 下载自定义软件
 #svn co https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-clash ../package/luci-app-clash
@@ -48,8 +48,8 @@ git clone https://github.com/110010110/luci-app-adguardhome package/luci-app-adg
 #rm -rf package/openwrt-packages/luci-app-clash && svn co https://github.com/hubbylei/luci-app-clash package/openwrt-packages/luci-app-clash
 
 # 添加passwall依赖库
-#git clone https://github.com/kenzok8/small package/small
-#svn co https://github.com/Lienol/openwrt-package/tree/master/package package/small
+git clone https://github.com/kenzok8/small package/small
+svn co https://github.com/Lienol/openwrt-package/tree/master/package package/small
 
 # 替换更新haproxy默认版本
 #rm -rf feeds/packages/net/haproxy && svn co https://github.com/Lienol/openwrt-packages/net/haproxy feeds/packages/net/haproxy
@@ -134,11 +134,11 @@ EOF
 
 # 第三方插件选择:
 cat >> .config <<EOF
-#CONFIG_PACKAGE_luci-app-oaf=y #应用过滤
+CONFIG_PACKAGE_luci-app-oaf=y #应用过滤
 CONFIG_PACKAGE_luci-app-clash=y
 #CONFIG_PACKAGE_luci-app-openclash=y #OpenClash
-#CONFIG_PACKAGE_luci-app-serverchan=y #微信推送
-#CONFIG_PACKAGE_luci-app-eqos=y #IP限速
+CONFIG_PACKAGE_luci-app-serverchan=y #微信推送
+CONFIG_PACKAGE_luci-app-eqos=y #IP限速
 #CONFIG_PACKAGE_luci-app-adguardhome=y #ADguardhome
 #CONFIG_PACKAGE_AdGuardHome=y
 EOF
@@ -154,16 +154,16 @@ CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=n
 EOF
 
 # Passwall插件:
-#cat >> .config <<EOF
-#CONFIG_PACKAGE_luci-app-passwall=y
-#CONFIG_PACKAGE_https-dns-proxy=y
-#CONFIG_PACKAGE_naiveproxy=y
-#CONFIG_PACKAGE_kcptun-client=y
-#CONFIG_PACKAGE_chinadns-ng=y
-#CONFIG_PACKAGE_brook=y
-#CONFIG_PACKAGE_trojan-go=y
-#CONFIG_PACKAGE_shadowsocks-rust-sslocal=y
-#EOF
+cat >> .config <<EOF
+CONFIG_PACKAGE_luci-app-passwall=y
+CONFIG_PACKAGE_https-dns-proxy=y
+CONFIG_PACKAGE_naiveproxy=y
+CONFIG_PACKAGE_kcptun-client=y
+CONFIG_PACKAGE_chinadns-ng=y
+CONFIG_PACKAGE_brook=y
+CONFIG_PACKAGE_trojan-go=y
+CONFIG_PACKAGE_shadowsocks-rust-sslocal=y
+EOF
 
 # 常用LuCI插件:
 cat >> .config <<EOF
@@ -190,7 +190,7 @@ CONFIG_PACKAGE_luci-app-commands=y
 #CONFIG_PACKAGE_luci-app-jd-dailybonus=y
 CONFIG_PACKAGE_luci-app-nps=y
 CONFIG_PACKAGE_luci-app-watchcat=y
-#CONFIG_PACKAGE_luci-app-zerotier=y
+CONFIG_PACKAGE_luci-app-zerotier=y
 #CONFIG_PACKAGE_luci-app-sfe=n #高通开源的 Shortcut FE 转发加速引擎
 #CONFIG_PACKAGE_luci-app-flowoffload=y #开源 Linux Flow Offload 驱动
 #CONFIG_PACKAGE_luci-app-haproxy-tcp is not set #Haproxy负载均衡
@@ -232,8 +232,8 @@ EOF
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-atmaterial=y
 #CONFIG_PACKAGE_luci-theme-bootstrap=y
-#CONFIG_PACKAGE_luci-theme-argon_new=y
-#CONFIG_PACKAGE_luci-theme-argon
+CONFIG_PACKAGE_luci-theme-argon_new=y
+CONFIG_PACKAGE_luci-theme-argon
 #CONFIG_PACKAGE_luci-theme-netgear=y
 #CONFIG_PACKAGE_luci-theme-edge=y
 CONFIG_PACKAGE_luci-theme-material=y
